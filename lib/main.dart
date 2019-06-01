@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hackathon_2019/root_screen.dart';
 
 void main() => runApp(HackathonJobFinderApp());
 
@@ -7,10 +8,8 @@ class HackathonJobFinderApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Hackathon - Job Finder',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
-      home: LoginScreen(),
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: RootScreen(),
     );
   }
 }
