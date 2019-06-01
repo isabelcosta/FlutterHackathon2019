@@ -13,11 +13,13 @@ class _JobsScreenState extends State<JobsScreen> {
 
   List<JobModel> jobsList = List();
 
-  @override
-  Widget build(BuildContext context) {
-
+  _JobsScreenState () {
     jobsList.add(JobModel('Title', 'Description', 'random_email@example.com', DateTime(2019, 3, 3)));
     jobsList.add(JobModel('Title_2', 'Description_2', 'random_email_2@example.com', DateTime(2019, 12, 16)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
@@ -75,8 +77,6 @@ class _JobsScreenState extends State<JobsScreen> {
                             ]
                           )
                         ],
-
-
                       )
                     ),
                   ),
@@ -90,7 +90,9 @@ class _JobsScreenState extends State<JobsScreen> {
   }
 
   void _showDialog() {
-    // flutter defined function
+
+    JobModel job = JobModel();
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -99,20 +101,29 @@ class _JobsScreenState extends State<JobsScreen> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
                     labelText: 'Enter job title'
                 ),
+                onChanged: (String textTyped) {
+                  job.title = textTyped;
+                },
               ),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
                     labelText: 'Enter job description'
                 ),
+                onChanged: (String textTyped) {
+                  job.description = textTyped;
+                },
               ),
-              TextFormField(
+              TextField(
                 decoration: InputDecoration(
                     labelText: 'Enter job email'
                 ),
+                onChanged: (String textTyped) {
+                  job.email = textTyped;
+                },
               ),
             ],
           ),
@@ -120,6 +131,17 @@ class _JobsScreenState extends State<JobsScreen> {
             FlatButton(
               child: Text("Close"),
               onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text("Create"),
+              onPressed: () {
+                setState((){
+                  job.dateTime = DateTime.now();
+                  jobsList.add(job);
+                  print(job.title);
+                });
                 Navigator.of(context).pop();
               },
             ),

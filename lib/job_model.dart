@@ -4,5 +4,5 @@ class JobModel {
   String email;
   DateTime dateTime;
 
-  JobModel(this.title, this.description, this.email, this.dateTime);
+  JobModel([this.title, this.description, this.email, this.dateTime]);
 }
