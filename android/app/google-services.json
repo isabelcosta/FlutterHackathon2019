@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "742819925961",
+    "firebase_url": "https://flutter-hackathon-19-jobfinder.firebaseio.com",
+    "project_id": "flutter-hackathon-19-jobfinder",
+    "storage_bucket": "flutter-hackathon-19-jobfinder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742819925961:android:a9d0ee188e7a7d23",
+        "android_client_info": {
+          "package_name": "com.example.flutterhackathon2019"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742819925961-4bbsu9m5ftnsspkdb8qe34fup5cf77gg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutterhackathon2019",
+            "certificate_hash": "e1c211b085ebbdca77e35ae8db99a691d2f35471"
+          }
+        },
+        {
+          "client_id": "742819925961-pkk6qvfuooue423n6fua8730n5js38sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGkFEsmjPWKZCPcLHhTjjn8FeusTe3Ua8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742819925961-pkk6qvfuooue423n6fua8730n5js38sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
