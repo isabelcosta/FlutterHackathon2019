@@ -8,9 +8,7 @@ class HackathonJobFinderApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Hackathon - Job Finder',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
+      theme: ThemeData(primarySwatch: Colors.green),
       home: RootScreen(),
     );
   }
