@@ -1,6 +1,17 @@
 # flutter_hackathon_2019
 
-A new Flutter application.
+This Flutter application was developed during the [#Hack19 International Flutter Hackathon](https://flutterhackathon.com/) at Lisbon Hub organized by [@FlutterPortugal](https://twitter.com/FlutterPortugal).
+
+The goal of this project was help flutter community to find and share job postings and talk with each other through conversations organizated in threads.
+
+## Collaborators
+
+- [@diogo319](https://github.com/diogo319)
+- [@Ginggas](https://github.com/Ginggas)
+- [@isabelcosta](https://github.com/isabelcosta)
+- [@miguelpruivo](https://github.com/miguelpruivo)
+- [@silvaric](https://github.com/silvaric)
+- [@Vanethos](https://github.com/Vanethos)
 
 ## Getting Started
 
