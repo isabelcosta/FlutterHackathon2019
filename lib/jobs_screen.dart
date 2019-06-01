@@ -16,8 +16,7 @@ class _JobsScreenState extends State<JobsScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-//            onPressed: () {
-//            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -25,59 +24,42 @@ class _JobsScreenState extends State<JobsScreen> {
         child: Center(
           child: ListView.builder(
               itemCount: 10,
-              padding: const EdgeInsets.only(
-                  bottom: 20.0
-              ),
+              padding: const EdgeInsets.only(bottom: 20.0),
               itemBuilder: (BuildContext ctxt, int index) {
-              return Padding(
-                padding: const EdgeInsets.only(
-                    top: 20.0,
-                    left: 20.0,
-                    right: 20.0
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.orange),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20.0)
+                return Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.orange),
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ListTile(
-                      title: Text('Title Example'),
-                      subtitle: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ListTile(
+                          title: Text('Title Example'),
+                          subtitle: Column(
                             children: <Widget>[
-                              Text('Description'),
-                              RaisedButton(
-                                child: Text('Contact'),
-                              )
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text('Description'),
+                                  RaisedButton(
+                                    child: Text('Contact'),
+                                  )
+                                ],
+                              ),
+                              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
+                                Text('Username'),
+                                Text('Data'),
+                              ])
                             ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text('Username'),
-                              Text('Data'),
-                            ]
-                          )
-                        ],
-
-
-                      )
+                          )),
                     ),
                   ),
-                ),
-              );
-            }
-          ),
+                );
+              }),
         ),
       ),
     );
   }
 }
-
-
