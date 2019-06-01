@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+import 'main.dart';
 import 'testeLogin.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,21 +16,24 @@ class _LoginScreenState extends State<LoginScreen> {
       GoogleSignIn(scopes: ['email', 'displayName', 'photoUrl']);
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  final TextEditingController textUsername = TextEditingController();
+  final TextEditingController textPassword = TextEditingController();
+
+  bool isSignIn = false;
+
   Future<FirebaseUser> _handleSignIn() async {
-    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    if (googleUser == null) {
-      return null;
-    }
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
 
-    final FirebaseUser user = await _auth.signInWithCredential(credential);
+    FirebaseUser user;
     print("signed in " + user.toString());
+
+    if(isSignIn){
+      user = await _auth.signInWithEmailAndPassword(email: textUsername.value.text, password: textPassword.value.text);
+    }
+    else{
+      user =  await _auth.createUserWithEmailAndPassword(email: textUsername.value.text, password: textPassword.value.text);
+    }
+
     return user;
   }
 
@@ -61,15 +65,56 @@ class _LoginScreenState extends State<LoginScreen> {
               Expanded(
                   child: Align(
                     alignment: Alignment.bottomCenter,
-                child: GoogleSignInButton(
-                  onPressed: () {
-                    _handleSignIn()
-                        //TODO Alterar HomePageTest para a pagina das Threads
-                        .then((FirebaseUser user) => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => HomePageTeste(user))))
-                        .catchError((e) => print(e));
-                  },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children:[
+                    Card(
+                      child: Column(
+                        children: <Widget>[
+                          TextField(
+                            controller: textUsername,
+
+                          ),
+                          TextField(
+                            controller: textPassword,
+                            obscureText: true,
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Switch(
+                          value: isSignIn,
+                          onChanged: (value){setState(() {
+                            isSignIn = value;
+                          });},
+                        ),
+                        RaisedButton(
+                          color: isSignIn ? Colors.green : Colors.blue,
+                          child: Text(
+                            isSignIn ? 'Log In' : 'Sign In',
+                            style: TextStyle(
+                              color: Colors.white
+                            ),
+                          ),
+                        onPressed: () {
+                          _handleSignIn()
+                              //TODO Alterar HomePageTest para a pagina das Threads
+                              .then((FirebaseUser user) {
+                                GLOBAL_USER = user;
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) {
+                                        HomePageTeste(user);
+                                      }));})
+                              .catchError((e) => print(e));
+                        },
+                  ),
+                      ],
+                    )],
                 ),
               )),
               Expanded(
