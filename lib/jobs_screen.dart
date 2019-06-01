@@ -13,6 +13,13 @@ class _JobsScreenState extends State<JobsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('JobFinder'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+//            onPressed: () {
+//            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: Center(
