@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hackathon_2019/threads_screen.dart';
+import 'package:flutter_hackathon_2019/jobs_screen.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({Key key}) : super(key: key);
@@ -10,7 +11,7 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreenState extends State<RootScreen> {
   int _currentTab = 0;
-  final List<Widget> _screens = [ThreadsScreen(), Container()];
+  final List<Widget> _screens = [ThreadsScreen(), JobsScreen()];
 
   @override
   Widget build(BuildContext context) {
