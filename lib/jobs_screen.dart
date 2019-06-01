@@ -1,30 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hackathon_2019/job_model.dart';
 
 class JobsScreen extends StatefulWidget {
   JobsScreen({Key key}) : super(key: key);
+
   @override
   _JobsScreenState createState() => _JobsScreenState();
 }
 
 class _JobsScreenState extends State<JobsScreen> {
+
+  List<JobModel> jobsList = List();
+
   @override
   Widget build(BuildContext context) {
+
+    jobsList.add(JobModel('Title', 'Description', 'random_email@example.com', DateTime(2019, 3, 3)));
+    jobsList.add(JobModel('Title_2', 'Description_2', 'random_email_2@example.com', DateTime(2019, 12, 16)));
+
     return Scaffold(
       appBar: AppBar(
         title: Text('JobFinder'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-//            onPressed: () {
-//            },
+            onPressed: () {
+                _showDialog();
+            },
           ),
         ],
       ),
       body: SafeArea(
         child: Center(
           child: ListView.builder(
-              itemCount: 10,
+              itemCount: jobsList.length,
               padding: const EdgeInsets.only(
                   bottom: 20.0
               ),
@@ -45,13 +55,13 @@ class _JobsScreenState extends State<JobsScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: ListTile(
-                      title: Text('Title Example'),
+                      title: Text(jobsList[index].title),
                       subtitle: Column(
                         children: <Widget>[
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Text('Description'),
+                              Text(jobsList[index].description),
                               RaisedButton(
                                 child: Text('Contact'),
                               )
@@ -61,7 +71,7 @@ class _JobsScreenState extends State<JobsScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text('Username'),
-                              Text('Data'),
+                              Text(jobsList[index].dateTime.toString()),
                             ]
                           )
                         ],
@@ -78,6 +88,44 @@ class _JobsScreenState extends State<JobsScreen> {
       ),
     );
   }
+
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Create Job'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Enter job title'
+                ),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Enter job description'
+                ),
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    labelText: 'Enter job email'
+                ),
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
-
-
