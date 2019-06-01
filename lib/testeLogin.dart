@@ -22,6 +22,8 @@ class _HomePageTesteState extends State<HomePageTeste> {
         children: <Widget>[
           Text(widget.user.displayName),
           Text(widget.user.email),
+          Image.network(widget.user.photoUrl),
+
           //Text(widget.user.phoneNumber)
         ],
       )
